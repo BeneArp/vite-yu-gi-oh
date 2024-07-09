@@ -1,6 +1,7 @@
 <script>
     export default {
         name: "Card",
+        props: ['info']
     }
 
 </script>
@@ -9,9 +10,16 @@
 
     <div class="card">
         <div class="image">
-            
+            <img :src="info.card_images[0].image_url" :alt="info.name">
         </div>
-        <div class="info"></div>
+        <div class="info">
+            <div class="title">
+                <h3>{{ info.name }}</h3>
+            </div>
+            <span>
+                {{ info.type }}
+            </span>
+        </div>
     </div>
 
 </template>
@@ -21,12 +29,20 @@
     @use '../styles/partials/mixins' as *;
 
     .card{
-        width: calc((100% / 5) - 1em);
         padding: 0.5em;
         margin: 1em 0.5em;
         // debug
         background-color: rgb(33 37 41);
-        height: 200px;
+
+        .info{
+            padding: 1em;
+            text-align: center;
+            color: white;
+
+            .title{
+                margin-bottom: 0.8em;
+            }
+        }
     }
 
 </style>

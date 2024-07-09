@@ -19,8 +19,9 @@
         methods:{
             getCardsList(){
                 axios.get(store.apiUrl).then(result => {
-                    console.log(result.data);
-                    store.cardsList = result.data;
+                    console.log(result.data.data);
+                    store.cardsList = result.data.data;
+                    // console.log(store.cardsList[0].card_images[0].image_url);
 
                 }).catch(error => {
                     console.log(error);
@@ -39,11 +40,13 @@
 
     <div class="container">
         <div id="counter">
-            <span>Found Cards</span>
+            <span>Found Cards {{ store.cardsList.length }}</span>
         </div>
 
         <div id="cards-container">
-            <Card/>
+            <div class="col" v-for="card in store.cardsList" :key="card.id">
+                <Card :info="card"/>
+            </div>
         </div>
     </div>
 
@@ -56,7 +59,6 @@
     .container{
         padding: 2em;
         // debug
-        height: 600px;
         background-color: goldenrod;
 
         #counter{
@@ -73,6 +75,11 @@
         #cards-container{
             @include flex;
             flex-wrap: wrap;
+            align-items: flex-start;
+
+            .col{
+                width: calc((100% / 5) - 1em);
+            }
         }
     }
 
