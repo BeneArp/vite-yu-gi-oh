@@ -3,6 +3,8 @@
   import CardsList from './components/CardsList.vue'
   import AppSearch from './components/AppSearch.vue'
 
+  import {store} from './store'
+
   
   export default{
       name: 'App',
@@ -11,13 +13,27 @@
         CardsList,
         AppSearch,
       },
+
+      data(){
+        return{
+          store,
+        }
+      },
+
+
+      methods:{
+        changeSelectedOption(){
+        console.log(store.selectedOption);
+      },
+
+      }
     }
 </script>
 
 <template>
   <AppHeader/>
   <main>
-    <AppSearch/>
+    <AppSearch @search="changeSelectedOption"/>
     <CardsList/>
   </main>
 </template>

@@ -1,5 +1,5 @@
 <script>
-    import {archetype} from '../store'
+    import {store, archetype} from '../store'
     import axios from 'axios';
 
     export default {
@@ -7,7 +7,8 @@
 
         data(){
         return{
-          archetype,
+            store,
+            archetype,
         }
       },
 
@@ -24,7 +25,8 @@
       },
 
       created(){
-        this.getArchetypeList()
+        this.getArchetypeList();
+        console.log(store.selectedOption);
       }
     }
 
@@ -33,9 +35,9 @@
 <template>
 
     <div class="container">
-        <select name="tipo di carta" id="">
-            <option value="">Select an Archetype</option>
-            <option value="" v-for="archetypeSerch in archetype.archetypeList">{{ archetypeSerch.archetype_name }}</option>
+        <select name="tipo di carta" id="" v-model="store.selectedOption" @change="$emit('search')">
+            <!-- <option value="">Select an Archetype</option> -->
+            <option :value="archetypeSerch.archetype_name" v-for="archetypeSerch in archetype.archetypeList" :key="archetypeSerch.archetype_name">{{ archetypeSerch.archetype_name }}</option>
         </select>
     </div>
 
