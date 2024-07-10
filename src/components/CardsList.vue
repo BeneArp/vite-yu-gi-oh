@@ -26,12 +26,13 @@
                 }).catch(error => {
                     console.log(error);
                 })
-            }
+            },
         },
 
         created(){
             this.getCardsList();
         }
+
     }
 
 </script>

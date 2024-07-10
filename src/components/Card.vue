@@ -17,7 +17,7 @@
                 <h3>{{ info.name }}</h3>
             </div>
             <span>
-                {{ info.type }}
+                {{ info.archetype }}
             </span>
         </div>
     </div>
@@ -35,7 +35,7 @@
         background-color: rgb(33 37 41);
 
         .info{
-            padding: 1em;
+            padding: 1.5em 1em;
             text-align: center;
             color: white;
 
