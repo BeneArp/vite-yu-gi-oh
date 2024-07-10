@@ -18,14 +18,17 @@
 
         methods:{
             getCardsList(){
-                axios.get(store.apiUrl).then(result => {
+                if(store.selectedOption === null){
+                    axios.get(store.apiUrl).then(result => {
                     console.log(result.data.data);
                     store.cardsList = result.data.data;
                     // console.log(store.cardsList[0].card_images[0].image_url);
 
-                }).catch(error => {
-                    console.log(error);
-                })
+                    }).catch(error => {
+                        console.log(error);
+                    })
+                }
+                
             },
         },
 
