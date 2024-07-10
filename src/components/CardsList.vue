@@ -80,6 +80,7 @@
             @include flex;
             flex-wrap: wrap;
             align-items: flex-start;
+            gap: 1em;
 
             .col{
                 width: calc((100% / 5) - 1em);
